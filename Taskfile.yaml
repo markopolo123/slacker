@@ -1,0 +1,10 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+  build:
+    desc: Build the project for the current platform
+    cmds:
+      - goreleaser build --single-target --snapshot --clean
+    silent: true
