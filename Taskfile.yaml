@@ -2,9 +2,18 @@
 
 version: "3"
 
+includes:
+  docs: ./docs/Taskfile.yaml
+
 tasks:
   build:
     desc: Build the project for the current platform
     cmds:
       - goreleaser build --single-target --snapshot --clean
+    silent: true
+
+  release:
+    desc: Release the project
+    cmds:
+      - goreleaser release --snapshot --rm-dist
     silent: true
