@@ -15,5 +15,5 @@ tasks:
   release:
     desc: Release the project
     cmds:
-      - goreleaser release --snapshot --rm-dist
+      - goreleaser release --snapshot --clean
     silent: true
