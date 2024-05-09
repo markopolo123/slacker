@@ -1,0 +1,70 @@
+{{define "main"}}
+<div class="home-container">
+
+    <div class="intro-grid">
+        <div class="intro-content">
+            <h1>Docs</h1>
+            Welcome to possible the most pointless documentation website on the Internet...
+        </div>
+
+        <div class="about-crossplane border border-2 about-box">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <h3>About Slacker</h3>
+                </div>
+                <div class="about-link"><a href="/reference/">Learn More</a></div>
+            </div>
+            <div class="about-image">
+                <img class="mx-auto d-block img-fluid" loading="eager" src="/img/home/flow.svg" alt="Slacker logo"
+                    width="auto" height="45px">
+            </div>
+            Ever wanted to not leave your terminal to set your Slack status? Well, you're in luck!
+        </div>
+
+        <div class="about-upbound border border-2 about-box">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <h3>About the Author</h3>
+                </div>
+                <div class="about-link"><a href="https://marksharpley.co.uk">Learn More</a></div>
+            </div>
+            <div class="about-image align-items-center">
+                <img class="mx-auto d-block img-fluid" loading="eager"
+                    src="https://avatars.githubusercontent.com/u/698889?v=4" alt="github avatar" height="45px"
+                    width="200px" style="border-radius: 50%;">
+            </div>
+            The author breaks computers for a living and sometimes writes about it.
+        </div>
+    </div>
+
+    <div class="title">
+        <h2>Resources</h2>
+    </div>
+
+    <div class="three-wide-grid">
+        {{ range .Site.Sections.ByWeight }}
+        <div class="element-container">
+            <div class="element-icon">
+                <svg width="30px" height="30px">
+                    <use xlink:href="#{{.Params.icon | default ""}}" />
+                </svg>
+            </div>
+            <div class="element-content">
+                <div class="element-page-title">
+                    <h3><a href="{{.Permalink}}" class="stretched-link">{{.Title}}</a></h3>
+                </div>
+                <div class="element-description">
+                    {{ .Params.description }}
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+
+
+</div>
+
+
+
+</div>
+{{ end }}

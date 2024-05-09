@@ -1,0 +1,111 @@
+// Global Upbound styling variables
+
+$bd-callout-variants: info, warning, danger !default;
+
+$font-family-sans-serif:      "Avenir-Roman", "Avenir" !default;
+$font-family-monospace:       "Consolas" !default;
+$line-height-base:            1.5 !default;
+$font-size-root:              16px !default;
+$font-size-base:              1rem !default;
+
+$body-font-size:              16px !default;
+$body-line-height:            24px !default;
+
+$up-code-font-size:           14px !default;
+$up-code-line-height:         21px !default;
+$list-group-hover-bg:               var(--tertiary-bg) !default;
+$list-group-active-color:           $component-active-color !default;
+$list-group-active-bg:              $component-active-bg !default;
+$list-group-active-border-color:    $list-group-active-bg !default;
+
+
+// Variables ending with an "n" have accurate numbers that match their relative location on that color's light-dark spectrum.
+
+$up-purple-50:          #F5EEFE !default;
+$up-purple-100:         #F5EEFE !default;
+$up-purple-200:         #E1CEFE !default;
+$up-purple-300:         #AF7EFD !default;
+$up-purple-400:         #7D4CD1 !default;
+$up-purple-500:         #402A7B !default;
+$up-purple-600:         #21194F !default;
+
+$up-purple-300n:        #C39EFD !default;
+
+$up-grey-000:           #FFFFFF !default; // This color is properly placed but does not have an "n" yet to not disassociate links
+$up-grey-100:           #F8F9F9 !default;
+$up-grey-200:           #F2F2F4 !default;
+$up-grey-300:           #E5E6E9 !default;
+$up-grey-400:           #ECEDEF !default;
+$up-grey-500:           #9A9CA7 !default;
+$up-grey-600:           #CDCDD3 !default;
+
+$up-grey-300n:          #B3B4BD !default;
+$up-grey-700n:          #4E5165 !default;
+$up-grey-800n:          #353950 !default;
+$up-grey-850n:          #292C45 !default;
+
+$up-neutral-0:          #FFFFFF !default;
+$up-neutral-50:         #F2F2F4 !default;
+$up-neutral-100:        #E5E6E9 !default;
+$up-neutral-200:        #CDCDD3 !default;
+$up-neutral-400:        #9A9CA7 !default;
+$up-neutral-600:        #686A7C !default;
+$up-neutral-900:        #222828 !default;
+$up-neutral-300:        #B5B7B7 !default;
+
+$up-blue-300n:          #7AC0F8 !default;
+
+$up-green-300n:         #94CF96 !default;
+
+$up-yellow-300n:        #F2DE86 !default;
+
+$up-orange-300n:        #F5B686 !default;
+
+$up-red-300n:           #F88E86 !default;
+
+$borderDark:            #353950 !default;
+
+$font-color-dark:       #030724 !default;
+$font-color-light:      #686A7C !default;
+
+$indigo-dye: #074b83ff;
+$dark-spring-green: #2f6a31ff;
+$field-drab: #78640dff;
+$chocolate: #7b3b0aff;
+$barn-red: #780f07ff;
+$french-gray: #afb3caff; 
+$lavender-web: #d9ddfcff;
+$cool-gray: #828497ff;
+$french-gray-2: #b9bcd5ff;
+$night: #0c0c0eff;
+$night-2: #151619ff;
+$raisin-black: #2b2b31ff;
+$davys-gray: #585a65ff;
+$platinum: #d6dcdcff;
+$outer-space: #494b4bff;
+$licorice: #090113ff;
+$russian-violet: #150132ff;
+$persian-indigo: #330283ff;
+$grape: #5F2EB2;
+
+$tropical-indigo: #9b85d5ff;
+$periwinkle: #b9b1e7ff;
+$persian-indigo-2: #26025fff;
+$black: #000000ff;
+$onyx: #42434cff;
+$cool-gray: #9a9db1ff;
+
+
+$body-font-weight:        normal !default;
+$body-min-width:          20rem !default;
+
+$color-admonition-background: transparent;
+
+
+:root {
+  font-size: $font-size-root;
+  --bs-body-color: #{$font-color-dark};
+  letter-spacing: 0.33px;
+  scroll-behavior: smooth;
+
+}

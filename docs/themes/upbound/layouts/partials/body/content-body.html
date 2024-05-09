@@ -1,0 +1,17 @@
+<div class="">
+	<div class="content-title pb-4">{{.Title}}</div>
+    {{ .Content }}
+    {{if .Page.IsSection }}
+        
+	<ul>
+        {{ range .Pages }}
+            
+		<li>
+			<a href="{{.Permalink}}">{{.Title}}</a>
+		</li>
+        {{ end }}
+        
+	</ul>
+    {{ end }}
+    
+</div>

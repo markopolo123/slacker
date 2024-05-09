@@ -1,0 +1,84 @@
+:root {
+  color-scheme: light dark;
+  body{
+    background: var(--body-background);
+    color: var(--body-font-color);
+
+  }
+
+}
+
+img {
+  filter: none;
+}
+
+
+
+:root[color-theme="light"] {
+  --logo-color: url('/img/logos/upbound-docs.svg');
+
+  @import "code-theme-base";
+  @import "color-mode-light";
+  @include light-mode;
+
+  @import "code-theme-light";
+  @include code-theme-light;
+  
+
+  // Don't dim images in light mode
+  // Safety catch to reset dark mode setting
+
+  img {
+    filter: none;
+  }
+
+    
+
+  .logo-container img {
+    /* Use the CSS variable as the background image */
+    content: var(--logo-color);
+}
+}
+
+:root[color-theme="dark"] {
+
+
+  @import "code-theme-base";
+  @import "color-mode-dark";
+  @include dark-mode;
+
+  @import "code-theme-dark";
+  @include code-theme-dark;
+
+  --logo-color: url('/img/logos/up-docs-white.svg');
+  --background-color-img: #{$up-grey-500};
+
+
+
+    // Dim all images in dark mode
+
+    img {
+      filter: brightness(.8) contrast(1.2);
+    }
+
+
+  
+    // Set the default image background to white
+    // Without this transparent images are hard to see
+
+    .bd-content img {
+      background-color: #ffffff;
+    }
+    // But don't set the background to white on the home page tiles
+    .home-card img {
+      background: none;
+    }
+
+    .logo-container img {
+      /* Use the CSS variable as the background image */
+      content: var(--logo-color);
+  }
+}
+
+
+

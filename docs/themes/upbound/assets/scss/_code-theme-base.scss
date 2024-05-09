@@ -1,0 +1,114 @@
+.language-shell :first-child .cl::before{
+    content: "$ "
+}
+
+// Style for highlighted lines when hovering over copy button
+.copyHover {
+  background-color: #{$up-grey-700n} !important;
+}
+
+// Code box div
+.highlight {
+  overflow-x: auto;
+  width: 100% !important;
+  background-color: #{$up-grey-850n};
+  display: flex !important;
+  margin-top: 1rem; // prevent boxes from running together
+  margin-bottom: 1rem;
+
+  [contentEditable=true]:empty:before{
+    content:attr(data-default);
+  }
+
+
+  [contentEditable=true]:empty:focus:before{
+    color:#ddd;
+  }
+
+  .edit-code-icon{
+    fill: #{$up-grey-300n};
+  }
+
+  :target{
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  // Clipboard div
+  .code-clipboard{
+    background-color: #{$up-grey-850n};
+    display: flex !important;
+    padding-right: 10px;
+
+    .clipboard-button{
+      border: 0;
+      color: #{$up-grey-300n};
+      background-color: inherit;
+
+      .bi {
+        width: 1em;
+        height: 1em;
+        fill: currentColor;
+      }
+
+      &:hover {
+        color: #{$up-grey-000};
+      }
+    }
+  }
+
+
+  //.highlight.chroma is applied to the entire code block div and the line number and
+  // code pre elements.
+  .chroma {
+    width: 100%;
+    display: flex !important;
+    background-color: var(--code-block-background-color);
+    margin-bottom: 0;
+    padding-bottom: .5rem;
+    padding-top: .5rem;
+
+    code {
+      color: #{$up-grey-000};   // Code color if there is no defined highlighter style
+      background-color: var(--code-block-background-color);
+      padding: 0.2em 0.4em;
+      font-size: $up-code-font-size !important; //.95rem !important;
+      line-height: $up-code-line-height; //1.45em;
+
+      .line {
+        @include media-breakpoint-down(xl){
+          padding-bottom: 3px;
+          padding-top: 3px;
+        }
+
+        // Statically defined highlighted code lines
+        &.hl {
+          background-color: var(--code-highlight-background) !important;
+        }
+      }
+      // Line numbers
+      .ln {
+        background-color: var(--code-line-numbers-background-color);
+        border-right: 1px solid #505a72;
+
+          // Line number anchors
+        a {
+          color: var(--code-line-number-color);
+          scroll-margin-top: 90px;
+          &:hover{
+            // text-decoration: none !important;
+            color: #{$up-grey-000};
+            font-weight: 800;
+            text-decoration: none !important;
+          }
+      }
+      }
+
+      // code line
+      .cl {
+        padding-left: 1rem;
+      }
+    }
+
+  }
+}

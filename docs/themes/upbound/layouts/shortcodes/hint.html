@@ -1,0 +1,16 @@
+{{- $cssClass := .Get 0 | lower | default "tip" -}}
+
+{{ $icons := dict
+  "tip" "circle-check.svg"
+  "note" "circle-info.svg"
+  "important" "circle-exclamation.svg"
+  "warning" "fire.svg" }}
+
+<div class="admonition {{$cssClass}} d-flex flex-column mx-0 px-4 py-2">
+  <div class="admonition-title">
+    {{ partial (printf "icons/%s" (index $icons $cssClass) ) }}<span class="ps-1">{{ $cssClass | humanize}}</span>
+  </div>
+  <div class="admonition-content">
+    {{ .Inner | .Page.RenderString }}
+  </div>
+</div>

@@ -1,0 +1,18 @@
+// Import the entire Bootstrap library and let PurgeCSS optimize in production
+@import "bootstrap/bootstrap";
+@import "variables";
+/* purgecss start ignore */
+@import "color-modes";
+@import "lightbox";
+/* purgecss end ignore */
+@import "top-nav";
+@import "left-sidebar-nav";
+@import "right-sidebar-toc";
+@import "content-body";
+@import "footer";
+@import "hints";
+@import "fonts";
+@import "grid";
+@import "offcanvas";
+@import "home";
+@import "docs-content-hierarchy";

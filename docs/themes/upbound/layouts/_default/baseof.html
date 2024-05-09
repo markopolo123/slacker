@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" class="color-toggle" color-theme="light">
+  <head>
+    {{ partial "head/base" . }}
+  </head>
+
+  <body>
+    {{ if eq hugo.Environment "production" -}}
+      {{ partialCached "body/gtag-body" . }}
+    {{ end }}
+
+    {{ partial "body/top-nav" .}}
+
+    <div class="grid" data-bs-spy="scroll" data-bs-target="#TableOfContents">
+      {{ partialCached "icons/sprites" . }}
+
+      {{ partial "body/left-sidebar-nav" .}}
+
+      {{ partial "body/offcanvas-nav" .}}
+
+      {{ block "main" . }}
+      {{ end }}
+
+      {{ partialCached "footer/base" . }}
+    </div>
+  </body>
+
+
+</html>

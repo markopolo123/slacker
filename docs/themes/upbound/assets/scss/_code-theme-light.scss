@@ -1,0 +1,112 @@
+// Code block chroma color theme.
+// https://gist.github.com/AbeEstrada/e16e4d22d9adec4e720fd62a16a0113d
+
+@mixin code-theme-light {
+  --code-block-background-color: #19212C;
+  --code-line-numbers-background-color: #{lighten(#19212C, 3)};
+  --edit-code-pencil: #fafafa;
+  --code-highlight-background: #{$up-grey-700n};
+  --border-bottom: #{$up-neutral-100};
+  
+
+
+  /* Theme: Colors customized by Upbound. Was originally Dracula */
+
+  /* Background */
+  .bg {
+    color: #f8f8f2;
+    background-color: #1b1c16;
+  }
+  /* PreWrapper */
+  .chroma {
+    color: #f8f8f2;
+    //background-color: #1b1c16;
+  }
+  /* Other */
+  .chroma .x {
+  }
+  /* CodeLine */
+  .chroma .cl {
+  }
+  /* LineTableTD */
+  .chroma .lntd {
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  /* LineTable */
+  .chroma .lntable {
+    border-spacing: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  /* LineHighlight */
+  .chroma .hl {
+    background-color: #{$up-grey-700n};
+  }
+  /* LineNumbersTable */
+  .chroma .lnt {
+    white-space: pre;
+    user-select: none;
+    margin-right: 0.4em;
+    padding: 0 0.4em 0 0.4em;
+    color: #b2b2b2;
+  }
+  /* LineNumbers */
+  .chroma .ln {
+    white-space: pre;
+    user-select: none;
+    margin-right: 0.4em;
+    padding: 0 0.4em 0 0.4em;
+    color: #7f7f7f;
+  }
+  /* Line */
+  .chroma .line {
+    display: flex;
+  }
+  /* Error and GenericDeleted */
+  .chroma .err, .chroma .gd {
+    color: #{$up-red-300n};
+  }
+  /* Keyword, KeywordDeclaration, KeywordCosntant, KeywordPseudo, KeywordReserved, KeywordType, NameConstant, GenericOutput */
+  .chroma .k, .chroma .kd, .chroma .kc, .chroma .kp, .chroma .kr, .chroma .kt, .chroma .no, .chroma .go {
+    color: #{$up-orange-300n};
+  }
+  /* KeywordNamespace, NameTag, Operator, OperatorWord */
+  .chroma .kn, .chroma .nt, .chroma .o, .chroma .ow {
+    color: #{$up-purple-300n};
+  }
+  /* Name, NameBuiltin, NameBuiltinPseudo, NameEntity, NameFunctionMagic, NameLabel, NameNamespace, NameProperty, NameVariable, NameVariableClass, NameVariableGlobal, NameVariableInstance, NameVariableMagic, Punctuation, Generic, GenericHeading, GenericError, GenericPrompt, GenericTraceback, GenericUnderline, TextWhitespace */
+  .chroma .n, .chroma .nb, .chroma .bp, .chroma .ni, .chroma .fm, .chroma .nl, .chroma .nn, .chroma .py, .chroma .nv, .chroma .vc, .chroma .vg, .chroma .vi, .chroma .vm, .chroma .p, .chroma .g, .chroma .gh, .chroma .gr, .chroma .gp, .chroma .gt, .chroma .gl, .chroma .w {
+  }
+  /* NameAttribute, NameClass, NameDecorator, NameException, NameFunction, NameOther, GenericInserted, Don't know what GH is */
+  .chroma .na, .chroma .nc, .chroma .nd, .chroma .ne, .chroma .nf, .chroma .nx, .chroma .gi, .chroma .gh {
+    color: #{$up-green-300n};
+  }
+  /* Literal, LiteralStringEscape, LiteralNumber, LiteralNumberBin, LiteralNumberFloat, LiteralNumberHex, LiteralNumberInteger, LiteralNumberIntegerLong, LiteralNumberOct */
+  .chroma .l, .chroma .se, .chroma .m, .chroma .mb, .chroma .mf, .chroma .mh, .chroma .mi, .chroma .il, .chroma .mo {
+    color: #{$up-blue-300n};
+  }
+  /* LiteralDate, LiteralString, LiteralStringAffix, LiteralStringBacktick, LiteralStringChar, LiteralStringDelimiter, LiteralStringDoc, LiteralStringDouble, LiteralStringHeredoc, LiteralStringInterpol, LiteralStringOther, LiteralStringRegex, LiteralStringSingle, LiteralStringSymbol */
+  .chroma .ld, .chroma .s, .chroma .sa, .chroma .sb, .chroma .sc, .chroma .dl, .chroma .sd, .chroma .s2, .chroma .sh, .chroma .si, .chroma .sx, .chroma .sr, .chroma .s1, .chroma .ss {
+    color: #{$up-yellow-300n};
+  }
+  /* Comment, CommentHashbang, CommentMultiline, CommentSingle, CommentSpecial, CommentPreproc, CommentPreprocFile, GenericSubheading */
+  .chroma .c, .chroma .ch, .chroma .cm, .chroma .c1, .chroma .cs, .chroma .cp, .chroma .cpf, .chroma .gu {
+    color: #{$up-grey-300n};
+  }
+  /* GenericEmph */
+  .chroma .ge {
+    font-style: italic;
+  }
+  /* GenericStrong */
+  .chroma .gs {
+    font-weight: bold;
+  }
+  // Add custom border radius
+  .highlight {
+    border-radius: 0.375rem;
+  }
+}

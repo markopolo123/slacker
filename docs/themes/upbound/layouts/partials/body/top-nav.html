@@ -1,0 +1,21 @@
+<div id="top-nav" class="logo nav-logo-search sticky-top">
+
+    <div class="logo-container">
+        <a href="//www.upbound.io">
+            <img loading="eager" src="/img/logos/upbound-docs.svg" height="21" alt="Upbound Homepage" id="logoImage">
+        </a>
+    </div>
+    
+    <script>
+        var logoColor = getComputedStyle(document.documentElement).getPropertyValue('--logo-color');
+                
+        // Set the image source dynamically
+        document.getElementById("logoImage").src = logoColor.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
+    </script>
+    
+
+    {{ partialCached "body/search-panel" . }}
+
+    {{ partialCached "body/darkmode" . }}
+
+</div>

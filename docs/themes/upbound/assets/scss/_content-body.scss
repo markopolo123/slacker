@@ -1,0 +1,185 @@
+// Styles related to the main article content body.
+.content-body {
+  grid-area: content-body;
+  line-height: 26px;
+  font-size: $body-font-size;
+
+  @include media-breakpoint-up(xl) {
+    padding: 50px;
+  }
+
+  @include media-breakpoint-down(xl) {
+    padding: 50px;
+    overflow-wrap: break-word;
+
+  }
+
+  // Override Bootstrap accordion colors in the body
+  .accordion {
+    --bs-accordion-border-color: #{$up-grey-300};
+    --bs-accordion-active-bg: #{$up-grey-000};
+    --bs-accordion-btn-focus-border-color: #{$up-purple-400};
+    --bs-accordion-button-focus-border-color: #{$up-purple-400};
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem $up-purple-400;
+  }
+
+  // Improve spacing and top-border on open Bootstrap accordions
+  .accordion-body {
+    border-top: 2px solid #{$up-grey-300};
+    .highlight {
+      margin:0px;
+    }
+  }
+  // Override Bootstrap accordion general properties
+  .accordion-header {
+    margin-top: 0px;
+  }
+
+  // Accordion styling
+  .accordion-button {
+    font-weight: 900;
+  }
+  .accordion-item {
+    border-width: 2px;
+  }
+  .accordion-button:hover {
+    outline: 2px solid #{$up-grey-600};
+  }
+  .accordion-button:not(.collapsed) {
+    color: #{$font-color-dark};
+  }
+
+  .content-title {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 2.8rem;
+  }
+
+  .table {
+    border: 1px solid #{$up-grey-600};
+    border-radius: 6px;
+    border-collapse: separate;
+    border-spacing: 0px;
+  }
+  // Hide bottom borders and wider padding for header items
+  .table th {
+    border-bottom: none;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  // Add only top borders and wider padding for content items
+  .table td {
+    border-top: 1px solid #{$up-grey-600};
+    border-bottom: none;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  // Decrease padding for small tables
+  .table.table-sm th {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;   
+  }
+  .table.table-sm td {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;  
+  }
+
+
+  h1, h2, h3, h4, h5, h6 {
+
+    a {
+      text-decoration: none !important;
+      color: inherit !important;
+
+      &:hover{
+        text-decoration: none !important;
+      }
+    }
+  }
+  // Individual inline code snippets
+  code {
+    background-color: var(--code-background);
+    color: var(--code-color);
+    padding: 0.2em 0.4em;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--content-link-color);
+
+    &:hover,
+    code {
+      text-decoration: underline !important;
+      color: var(--content-link-color);
+    }
+
+    &:visited {
+      color: var(--content-link-color);
+    }
+  }
+
+  // Offset content from fixed navbar when jumping to headings
+  .heading:target {
+    padding-top: 1rem;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    scroll-margin-top: 80px;
+  }
+
+  // Override Bootstrap Tab styles
+  .nav-tabs{
+
+    border-bottom: none;
+    font-weight: bold;
+
+    @include media-breakpoint-down(xl) {
+      li {
+        display: block !important;
+        margin: 0px;
+      }
+
+
+
+    }
+    // Create a border for the non-tabbed space.
+    // Prevents a double border for tabs/hover
+    &:not(.nav-link){
+      border-bottom: 2px solid #{$gray-300};
+      margin-bottom: 12px !important;
+    }
+
+    // Active tab style overrides normal nav-link styles
+    .active, .active:hover {
+      color: #{$purple-400} !important;
+      border-bottom: 2px solid #{$purple-400} !important;
+    }
+
+    // Remove tab outline and dim the text
+    .nav-link {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      color: #{$font-color-light};
+
+      @include media-breakpoint-down(xl) {
+        padding-left: 12px !important;
+      }
+
+      // Make the text dark and override bootstrap hover behaviors.
+      &:hover{
+        color: var(--body-font-color);
+        border-color: #{$gray-300};
+        border-bottom-width: 0;
+      }
+    }
+  }
+}

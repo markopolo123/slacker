@@ -1,0 +1,50 @@
+// Light mode specific color variables
+
+@mixin light-mode {
+    // body and content
+    --body-background: white;
+    --body-font-color: #030724;
+    --body-selection: #E1CEFE50;
+    --content-link-color: #{$up-purple-400};
+    --latest-pill-background: #{$up-grey-200};
+    --font-color: #{$font-color-dark};
+    --background-color: white;
+
+    --home-resource-bg: #{$up-grey-100};
+
+    --nav-item-click: #{$up-grey-850n};
+    --nav-item-click-bg: #{$up-grey-300};
+  
+    --nav-item-active: #{$up-purple-400};
+    --nav-item-active-bg: #{$up-purple-100};
+    --bs-list-group-active-bg: white;
+
+
+
+
+
+    // Single code lines inside text. Code blocks are in _code_theme_light.scss
+    --code-background: #03072415;
+    --code-color: #686A7C;
+    --code-line-number-color: #8bcbe6;
+
+    //hint boxes
+    --hint-important:                rgba(249, 207, 174, 1); 
+    --hint-important-background:     rgba(254, 249, 245, 1);
+    --hint-warning:                  rgba(251, 180, 175, 1);
+    --hint-warning-background:       rgba(254, 245, 245, 1);
+
+    --hint-tip:                      rgba(166,213,250,1);
+    --hint-tip-background:           #f4fafe;
+
+
+    --hint-note:                     rgba(205,205,211,1); 
+    --hint-note-background:          rgba(248,249,249,1);
+
+    // Code theme customizations
+    --code-line-numbers-background-color: #{lighten(#19212C, 3)};
+
+    .chroma {
+        background-color: inherit;
+    }
+}

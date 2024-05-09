@@ -1,0 +1,82 @@
+{{ $isDarkMode := true }} {{/* Set this to true or false based on your dark mode condition */}}
+
+{{- if not (.Get "src") -}}
+{{ errorf "\n\nNo src for {{< img >}} tag on %s \n\n\n" .Position }}
+{{ end }}
+
+{{- if not (.Get "alt") -}}
+{{ errorf "\n\nNo alt for {{< img >}} tag on %s \n\n\n" .Position }}
+{{ end }}
+
+{{/*  Undocumented option. Should only be used if an image is at the top of a page */}}
+{{ $loading := "lazy" }}
+{{ if .Get "eager" }}
+  {{ $loading = "eager" }}
+{{ end }}
+
+{{ $customAlt := .Get "alt" }}
+{{ $customSize := .Get "size" | default "medium" }}
+{{ $align := .Get "align" | default "" }}
+
+{{ if eq $align "center" }}
+  {{ $align = "d-flex justify-content-center" }}
+{{ else if eq $align "right" }}
+  {{ $align = "d-flex justify-content-end" }}
+{{ else }}
+  {{ $align = "d-flex" }}
+{{ end }}
+
+{{ $lightbox := true }}
+{{ with .Get "lightbox" }}
+  {{ if eq . "false" }}
+    {{ $lightbox = false }}
+  {{ end }}
+{{ end }}
+
+
+{{ $quality := "q75" }}
+{{ if .Get "quality" }}
+  {{ $quality = (printf "q%s" (.Get "quality")) }}
+{{ end }}
+
+{{/*  unBlur is an undocumented option. */}}
+{{/*  unBlur uses a different compression algo that is much better with text at the cost of build times. */}}
+{{ $resampleFilter := "Box" }}
+{{ if .Get "unBlur" }}
+  {{ $resampleFilter = "CatmullRom" }}
+{{ end }}
+
+{{ $source := resources.Get (printf "content%s" (.Get "src")) }}
+{{ if not $source }}
+{{ warnf "Unable to find image %s on page ./content/%s" (.Get "src") .Page.File }}
+{{ end }}
+
+{{ with $source }}
+
+  {{/*  Render the images used by srcset  */}}
+  {{ $xtiny := (.Resize (printf "150x webp  %s %s" $quality $resampleFilter)) }}
+  {{ $tiny := (.Resize (printf "300x webp  %s %s" $quality $resampleFilter)) }}
+  {{ $small := (.Resize (printf "600x webp %s %s" $quality $resampleFilter)) }}
+  {{ $medium := (.Resize (printf "800x webp %s %s" $quality $resampleFilter)) }}
+  {{ $large := (.Resize (printf "1200x webp %s %s" $quality $resampleFilter)) }}
+  {{ $original := (.Resize (printf "%dx%d webp %s %s" .Width .Height $quality $resampleFilter)) }}
+
+
+  {{ $size := dict "xtiny" $xtiny "tiny" $tiny "small" $small "medium" $medium "large" $large "original" $original }}
+  {{ $resizedImage := (index $size $customSize) }}
+
+  <div class="{{ $align }} {{ if $isDarkMode }}dark-mode{{ end }}">
+
+{{/* Spacing here is important. If there is space between the <a href>/</a> and <img> tags then it won't render properly in {{hint}} blocks */}}
+  {{ if $lightbox }}<a href="{{$source.Permalink}}" data-lightbox="{{.}}" data-alt="{{$customAlt}}">{{ end }}
+  <img loading="{{$loading}}"
+  src="{{ $resizedImage.RelPermalink }}"
+  height="{{ $resizedImage.Height }}"
+  width="{{ $resizedImage.Width }}"
+  class="rounded img-fluid mb-4"
+  alt="{{ $customAlt }}"
+  decoding="async"
+  style="{{ if $isDarkMode }} background-color: var(--background-color-img);{{ end }}">
+  {{ if $lightbox }}</a>{{ end }}
+</div>
+{{ end }}

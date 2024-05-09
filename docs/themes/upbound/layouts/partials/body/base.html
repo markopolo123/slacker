@@ -1,0 +1,10 @@
+
+<div class="content-body">
+  {{ partial "body/content-body" . }}
+</div>
+
+<div class="right-sidebar-toc offcanvas-xl offcanvas-end" tabindex="-1" id="right-nav-offcanvas" aria-labelledby="right-nav-offcanvas">
+  {{ if (and (ne .Page.Params.toc false) (gt (len .TableOfContents) 40)) }}
+    {{ partial "body/right-sidebar-toc" .}}
+  {{ end }}
+</div>

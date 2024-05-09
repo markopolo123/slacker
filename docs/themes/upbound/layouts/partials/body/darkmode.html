@@ -1,0 +1,13 @@
+<li class="nav-item col-xs p-2">
+  <div class="form-check form-switch color-switcher" >
+    <input class="d-flex form-check-input" type="checkbox" id="darkSwitch" />
+    <label class="d-flex navbar-link form-check-label" for="darkSwitch">Dark Mode</label>
+  </div>
+</li>
+<script>
+
+  if(document.documentElement.getAttribute("color-theme") === "dark"){
+    document.getElementById("darkSwitch").checked = true;
+  }
+
+</script>

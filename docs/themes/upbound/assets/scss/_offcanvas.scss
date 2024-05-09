@@ -1,0 +1,55 @@
+.offcanvas-backdrop{
+    background-color: inherit;
+}
+
+.nav-toggles{
+
+    border-bottom: 1px solid #{$up-grey-300} !important;
+    margin: 0px !important;
+    background-color: var(--body-background);
+    opacity: 1;
+
+
+    .left-navbar-toggler-container{
+        margin-left: 50px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+    // Force the close and open buttons to overlap
+        position: relative;
+
+        .nav-open-icon,.nav-close-icon {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+
+    .right-navbar-toggler-container{
+        margin-right: 50px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        position: relative;
+
+        .nav-open-icon,.nav-close-icon {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+
+    .offcanvas-icon{
+        height: 32px;
+        width: 32px;
+        fill: #{$up-purple-400};
+    }
+
+    @include media-breakpoint-up(xl) {
+        display: none;
+    }
+
+}

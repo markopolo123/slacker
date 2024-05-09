@@ -1,0 +1,103 @@
+<div class="left-sidebar-nav offcanvas-xl offcanvas-start" tabindex="-1" id="left-nav-offcanvas" aria-labelledby="left-nav-offcanvas">
+    <nav aria-label="Documentation section navigation" class="container px-0" id="left-nav-menu">
+        <div class="list-group top-level d-flex">
+            <div class="d-flex flex-row my-0 nav-parent-container position-relative list-group-item list-group-item-action {{if .IsHome }}active{{end}}" id="Docs">
+                <div class="left-offset hide"></div> <!-- Used to keep nav titles aligned evenly by flex -->
+                <a href="{{.Site.BaseURL}}" class="stretched-link">Docs</a>
+            </div>
+            {{ $currentPage := . }}
+            {{ with .Site.GetPage "section" "Docs" }}
+
+            {{ end }}
+            
+            {{ range .Site.Sections.ByWeight }}
+                {{ $expand := or (eq $currentPage .) (eq $currentPage.FirstSection .) }}
+                {{ $id := printf "section-%s" .Section | urlize }}
+                
+                <div class="d-flex flex-row my-0 nav-parent-container position-relative list-group-item list-group-item-action {{if eq $currentPage .}}active{{end}}" id="{{.Section}}" >
+
+                    <div class="button-container left-offset z-3">
+                        <div id="{{.Section}}-button" class="mx-0 accordion-button accordion accordion-item {{if not $expand}} collapsed {{end}}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{$id}}" aria-expanded="false" aria-controls="collapse-{{$id}}" title="Close/Expand"></div>
+                    </div>
+
+                    <a href="{{.Permalink}}" class="stretched-link" data-bs-toggle="collapse" data-bs-target="#collapse-{{$id}}" onclick="event.stopPropagation(); window.location.href='{{.Permalink}}';">
+                        <div class="nav-parent-title">
+                            {{.Title }}
+                        </div>
+                    </a>
+
+                </div>
+                
+                <div class="nav-child-container" id="{{.Section}}-children">
+                    <div class="collapse list-group {{if $expand}} show {{end}}" id="collapse-{{$id}}">
+                        {{if .Content}}
+                            <div class="list-group-item list-group-item-action nav-child child-link-container d-flex flex-row {{if eq $currentPage .}}active{{end}} {{ if or (not .Page.Params.tocHidden) (eq .CurrentSection "contribute") }}d-none{{end}}">
+                            <div class="left-offset hide"></div>
+                            <a href="{{.Permalink}}" class="stretched-link child-link">{{ .Title }}</a>
+                        </div>
+                    {{ end }}
+
+                    {{ range .Pages }}
+
+                    {{ if .Pages }}
+                        <!-- Show Section Title and its Subpages -->
+                        {{/*  Generate a random subpage ID to use as the collapse target ID  */}}
+                        {{ $subid := substr (sha1 .Permalink) 0 8 }}
+                        {{ $subexpand := (or (eq $currentPage .) (eq $currentPage.Parent .)) }}
+                        {{ $noContent := not .Content }}
+                        {{ $hasContent := not $noContent }}
+
+                        <!-- Parent Menu Button -->
+                        <div class="list-group-item list-group-item-action nav-child d-flex flex-row subheader position-relative  {{if eq $currentPage .}}active{{end}}" id="{{.Title}}" >
+                            <div class="button-container left-offset z-3 {{if not .Pages}}hide{{end}}">
+                                <!-- Increase z-index to put the button over the stretched-link -->
+                                <div id="{{.Title}}-button" class="mx-0 accordion-button accordion accordion-item {{if not $subexpand}}collapsed{{end}}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{$subid}}" aria-expanded="false" aria-controls="collapse-{{$subid}}" title="Close/Expand"></div>
+                            </div>
+                            <a href="{{.Permalink}}" class="stretched-link" data-bs-toggle="collapse" data-bs-target="#collapse-{{$id}}" onclick="event.stopPropagation(); window.location.href='{{.Permalink}}';">
+                                <div class="nav-parent-title">
+                                    {{.Title }}
+                                </div>
+                            </a>
+                        </div>
+
+
+                        <div id="{{.Title}}-children" class="{{ if .Page.Params.tocHidden }}d-none{{end}}">
+                            <div class="subpages collapse list-group {{if $subexpand}} show {{end}}" id="collapse-{{$subid}}">
+                                {{if .Content}}
+                                <div class="list-group-item list-group-item-action nav-child child-link-container d-flex flex-row {{if eq $currentPage .}}active{{end}} {{ if or (not .Page.Params.tocHidden) (eq .CurrentSection "contribute") }}d-none{{end}}">
+                                    <div class="left-offset hide"></div>
+                                <a href="{{.Permalink}}" class="stretched-link child-link">{{ .Title }}</a>
+                            </div>
+                                {{end}}
+                                {{ range .Pages }}
+                                    <div class="list-group-item list-group-item-action nav-child child-link-container d-flex flex-row {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
+                                        <div class="left-offset hide"></div>
+                                        <a href="{{.Permalink}}" class="stretched-link child-link">
+                                            {{ .Title }}
+                                        </a>
+                                    </div>
+                                {{ end }}
+                            </div>
+                        </div>
+
+                        
+
+                        {{ else }}
+                            <!-- Show Section Title only -->
+                            <div class="list-group-item list-group-item-action nav-child child-link-container d-flex flex-row {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
+                                <div class="left-offset hide active"></div>
+                                <a href="{{.Permalink}}" class="stretched-link child-link">
+                                    {{ .Title }}
+                                </a>
+                            </div>
+                        {{ end }}
+                    
+                    {{ end }}
+                </div>
+            </div>
+            {{ end }}
+        </div>
+
+        
+    </nav>
+</div>

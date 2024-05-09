@@ -1,0 +1,13 @@
+[
+  {{ range $index, $page := (where .Site.Pages "Params.SearchHidden" "ne" true) }}
+      {{ if ne $index 0 }},{{ end }}
+      {
+        "id": {{ $index }},
+        "href": "{{ $page.RelPermalink }}",
+        "title": {{ $page.Title | jsonify }},
+        "parent": {{ with $page.Parent }}{{ .Title | jsonify }}{{ else }}""{{ end }},
+        "content": {{ $page.Plain | jsonify }},
+        "description": {{ $page.Summary | plainify | jsonify }}
+      }
+    {{ end }}
+  ]

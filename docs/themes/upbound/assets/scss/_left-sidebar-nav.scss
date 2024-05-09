@@ -1,0 +1,31 @@
+// Styling related to the left-side global navigation
+
+// Custom modifications to built-in bootstrap tooling for the left-hand-nav/a
+#left-nav-menu {
+    overflow-y: scroll;
+    height: auto;
+    position: sticky;
+    top: 40px;
+    max-height: 100vh;
+    padding-bottom: 60px;
+
+    @include scrollbar-hidden;
+}
+
+.left-sidebar-nav{
+    grid-area: left-sidebar-nav;
+
+    flex-grow: 1 !important;
+
+    @include media-breakpoint-down(xl) {
+        margin-top: 65px;
+    }
+
+    &.offcanvas-xl {
+        background: var(--body-background) !important;
+    }
+
+    .left-offset {
+        min-width: 28px;
+    }
+}

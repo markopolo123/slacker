@@ -1,0 +1,16 @@
+<div class="nav-toggles sticky-top row">
+    <div class="left-navbar-toggler-container col-auto me-auto">
+        <button class="navbar-toggler" id="left-nav-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#left-nav-offcanvas" aria-controls="left-nav-offcanvas" aria-label="Toggle Upbound site navigation">
+            <svg class="offcanvas-bars offcanvas-icon nav-open-icon" aria-hidden="true"><use xlink:href="#bars"></use></svg>
+            <svg class="offcanvas-bars-x offcanvas-icon  nav-close-icon invisible" aria-hidden="true"><use xlink:href="#x"></use></svg>
+        </button>
+    </div>
+    
+
+    <div class="right-navbar-toggler-container col-auto {{ if (or (eq .Page.Params.toc false) (lt (len .TableOfContents) 40)) }} d-none {{ end }} ">
+        <button class="navbar-toggler" id="right-nav-toggle" type="button" data-bs-toggle="offcanvas" data-bs-toggle="button" data-bs-target="#right-nav-offcanvas" aria-controls="left-nav-offcanvas" aria-label="Toggle page table of contents">
+            <svg class="offcanvas-arrows offcanvas-icon nav-open-icon" aria-hidden="true"><use xlink:href="#arrow-up-arrow-down"></use></svg>
+            <svg class="offcanvas-arrows-x offcanvas-icon nav-close-icon invisible " aria-hidden="true"><use xlink:href="#x"></use></svg>
+        </button>
+    </div>
+</div>

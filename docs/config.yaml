@@ -1,0 +1,57 @@
+baseURL: "/"
+enableRobotsTXT: True
+languageCode: "en-us"
+title: "Slacker Docs"
+theme: "upbound"
+enableGitInfo: true
+uglyurls: false
+timeout: 180000
+disableKinds:
+  - taxonomy
+  - term
+  - RSS
+
+build:
+  # writeStats: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  tableOfContents:
+    startLevel: 1
+    endLevel: 9
+  highlight:
+    codeFences: true
+    noClasses: false
+    linenos: false
+    anchorLineNos: true
+    lineNumbersInTable: false
+
+module:
+  mounts:
+    - source: content
+      target: content
+    - source: assets
+      target: assets
+    - source: content
+      target: assets/content
+      includeFiles:
+        - "**/**.png"
+        - "**/**.jpg"
+        - "**/**.jpeg"
+        - "**/**.gif"
+
+# Enable Hugo access to environmental variables to apply deploy preview banner
+security:
+  funcs:
+    getenv:
+      - ^CONTEXT
+      - ^REVIEW_ID
+
+params:
+  repoLink: "https://github.com/markopolo123/"
+  anchors:
+    min: 2
+    max: 5
+  description: "slacker lets you set your slack status from the command line in style."

@@ -1,0 +1,55 @@
+// Footer related styling
+.footer-content{
+    grid-area: footer-container;
+    font-size: 16px;
+    margin-right: 0px !important;
+
+    @include media-breakpoint-up(md) {
+    padding-left: 5rem;
+    padding-top: 4rem;
+    margin-bottom: 4rem;
+    }
+
+    @include media-breakpoint-down(md) {
+        padding-top: 50px;
+        padding-left: 50px;
+        padding-bottom: 50px;
+
+        .footer-links.col{
+            flex: 0 0 auto !important;
+            width: 50% !important;
+            padding-bottom: 50px;
+        }
+    }
+
+
+    .footer-brand{
+        color: var(--body-font-color);
+        fill: var(--body-font-color);
+        filter: var(--brightness);
+
+
+        // Move the brand to the bottom and update padding
+        @include media-breakpoint-down(md) {
+            order: 3;
+            width: inherit;
+            padding-top: 50px;
+        }
+    }
+
+    .footer-col-1 {
+        // Reset the left-margin used when the logo is to the left
+        @include media-breakpoint-down(md) {
+            margin-left: 0 !important;
+        }
+    }
+
+    .footer-heading{
+        font-weight: 900;
+    }
+
+    a {
+        text-decoration: none;
+        color: #{$up-purple-400};
+    }
+}

@@ -1,0 +1,14 @@
+{{ partialCached "head/meta-common" . }}
+{{ if eq hugo.Environment "production" -}}
+    {{ partialCached "head/js/gtag-header" . }}
+    {{ partialCached "head/js/ms-clarity" . }}
+{{ end }}
+<meta name="description" content="{{ .Page.Params.description | default .Site.Params.description | markdownify }}">
+<meta property="og:url"  content="{{ .Permalink }}" />
+
+<title>Upbound Docs {{if not .IsHome }} - {{.Title }} {{ end }}  </title>
+<link rel="canonical" href="https://docs.upbound.io{{ .Permalink }}">
+
+{{ partialCached "head/js/color-mode-js" . }}
+{{ partial "head/stylesheets/stylesheet" . }}
+{{ partialCached "head/favicons" . }}

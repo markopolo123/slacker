@@ -1,0 +1,19 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+  generate-svg:
+    cmds:
+      - find . -type f -name '*.d2' -print0 | xargs -0 -I{} bash -c 'cd "$(dirname "{}")"; d2 --sketch --dark-theme 200 --theme=0 --dark-theme=200 "$(basename "{}")" "$(basename "{}" .d2).svg"'
+    silent: false
+  generate-vhs:
+    cmds:
+      - find . -type f -name '*.tape' -print0 | xargs -0 -I{} bash -c 'cd "$(dirname "{}")"; vhs "$(basename "{}")"'
+    silent: false
+  serve:
+    desc: Serve the documentation
+    cmds:
+      - hugo serve
+    dir: docs
+    silent: true

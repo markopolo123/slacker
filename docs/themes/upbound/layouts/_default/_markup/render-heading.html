@@ -1,0 +1,6 @@
+{{/*  Add a CSS class to the anchor  */}}
+<h{{ .Level }} id="{{ .Anchor | safeURL }}">
+    <a class="" id="{{ .Anchor }}" href="#{{ .Anchor | safeURL }}" aria-label="Link to this section: {{ .Text | safeHTML }}">
+        {{ .Text | safeHTML }}
+    </a>
+</h{{ .Level }}>

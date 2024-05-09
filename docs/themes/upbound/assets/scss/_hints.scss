@@ -1,0 +1,106 @@
+// Styling for hint shortcode boxes
+
+$bd-callout-variants: info, warning, danger !default;
+$color-admonition-background: transparent;
+
+//hint boxes
+$hint-important:                var(--hint-important);
+$hint-important-background:     var(--hint-important-background);
+
+$hint-warning:                  var(--hint-warning);
+$hint-warning-background:       var(--hint-warning-background);
+
+$hint-tip:                      var(--hint-tip);
+$hint-tip-background:           var(--hint-tip-background);
+
+$hint-note:                     var(--hint-note);
+$hint-note-background:          var(--hint-note-background);
+$fill-color:                    var(--fill-color);
+
+// Style based on Furo https://github.com/pradyunsg/furo
+.admonition {
+
+    margin: 1rem auto;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+
+    background: #{$color-admonition-background};
+
+    border-radius: 0.375rem;
+
+    overflow: hidden;
+    page-break-inside: avoid;
+
+    // First element should have no margin, since the title has it.
+    > :nth-child(2) {
+        margin-top: 0;
+    }
+
+    // Last item should have no margin, since we'll control that w/ padding
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+.admonition-title {
+    position: relative;
+    margin-bottom: 0.5rem;
+
+    font-weight: 900;
+    line-height: 1.3;
+
+    // Our fancy icon
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0.5rem;
+        width: 1rem;
+        height: 1rem;
+    }
+
+    // Helps vertically align the SVG icon because it's smaller height than the font
+    img, svg {
+        margin-bottom: 3px;
+        margin-right: 3px;
+        fill: $fill-color;
+    }
+
+}
+
+//
+// Variants
+//
+
+.admonition {
+    border-radius: 0.375rem;
+    border: 1px solid rgba(205,205,211, 1);
+    opacity: 1;
+    background-color: var(--hint-note-background);
+    border-color: var(--hint-note);
+
+
+    &.warning {
+        border-color: #{$hint-warning};
+        background-color: #{$hint-warning-background};
+    }
+    &.tip {
+        border-color:#{$hint-tip};
+        background-color:#{$hint-tip-background};
+    }
+
+    &.important {
+        border-color:#{$hint-important};
+        background-color:#{$hint-important-background};
+    }
+
+    // &.tip {
+    //     border-left-color: #{$hint-tip};
+
+    //     >.admonition-title {
+    //         background-color: #{$hint-tip-background};
+    //     }
+    // }
+
+}

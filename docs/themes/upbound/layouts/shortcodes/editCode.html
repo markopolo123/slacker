@@ -1,0 +1,1 @@
+{{ replaceRE `\$\@(.*)\$\@` "<span class=\"pe-2\" data-default=\"$1\" contentEditable=\"true\"></span><svg class=\"edit-code-icon\" width=\"1em\" height=\"1em\"><use xlink:href=\"#pencil\"/></svg>" (.Inner | markdownify) | safeHTML }}
